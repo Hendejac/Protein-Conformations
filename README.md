@@ -1,3 +1,1 @@
-![](images/main.png)
 
-text
