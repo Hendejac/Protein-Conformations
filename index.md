@@ -6,11 +6,15 @@
 
 # Purpose
 
-How to find the difference between two molecular dynamics (MD) simulations quickly using the random forest (RF) algorithm.
+Looking through esembles of molecular dynamics (MD) trajectories can be a daunting task.
+Here, I show how to use the Random Forest (RF) algorithm to quickly located difference between different ensembles of MD simulations. 
 
-## Example 
+## Example Case
 
-Here we will be looking at the malarial aspartyl protease Plasmepsin II where one simulation has an inhibitor bound and the other is inhibitor free.
-By training the RF classifier between two states, in this case inhibitor bound and unbound snap shots from MD simulations, you can use the feature importance to provide insight about the protein conformation. 
-The power of this method helps detect conformational difference in allosteric sites and quickly guides ones eye to investigate the MD simulations.
+Here we will be looking at the malarial aspartyl protease Plasmepsin II (PDBid: 1SME) where one simulation has an inhibitor bound and the other is inhibitor free.
+By training the RF classifier between two states, in this case using inhibitor bound and unbound snap shots from MD simulations, you can use the feature importance to provide insight about the protein conformation.
+The features in this can can almost be anything from water positions, dihedral angles, and Cα positions.
+In this example the Cα positions will be used. 
+The power of using the RF algorithm to to find the conformational differences is to reduce the amount of time spent by a computational chemist rigorously groom MD simulations by eye, and it has the potential to detect allosteric conformational changes that one would think to look at. 
+
 
