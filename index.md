@@ -11,6 +11,8 @@ Here, I show how to use the Random Forest (RF) algorithm to quickly located diff
 
 ## Example Case
 
+![](apo_holo.png)
+
 Here we will be looking at the malarial aspartyl protease Plasmepsin II (PDBid: 1SME) where one simulation has an inhibitor bound and the other is inhibitor free.
 By training the RF classifier between two states, in this case using inhibitor bound and unbound snap shots from MD simulations, you can use the feature importance to provide insight about the protein conformation.
 The features in this can can almost be anything from water positions, dihedral angles, and Cα positions.
