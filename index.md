@@ -39,3 +39,4 @@ In this example I have provide examples of the following inputs.
 4.) pdb_for_coloring.pdb, PDB used to color by feature importance 
 ```
 Note: Sometimes the check.pdb and pdb_for_color.pdb can be the same and depending on the scenerio that an be different.
+
