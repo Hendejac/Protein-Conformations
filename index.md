@@ -151,7 +151,13 @@ After loading your PDB in PyMOL you can use the following command.
 spectrum b, red_white_blue, minimum=0, maximum=1
 ```
 
+<p align="center">
+ <img width="600" src="final.png">
+</p>
 
-
-
+Looking at this colored PDB file instantly shows where you need to focus your analysis when analyzing MD trajectories. 
+We can see the highlighted blue areas show were the protein differs the most between the apo and holo simulations showing that the presence of the inhibitor effects these areas the most. 
+Unsuprisingly we see changes in the protein substrate binding site, but conformational changes also take place on the bottom (C-terminal lobe) of the protein. 
+This is a very basic demonstration of using the RF classifier on MD trajecories, this method can be focused to look at every atom in the binding site to see exactly what part of what residue is changing positions and many other scenerioes. 
+This method has also been extend to looking at the displacement of water positions upon inhibitor binding, something that might be added here in the future. 
 
