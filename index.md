@@ -1,4 +1,4 @@
-# How to use Random Forest Importance Feature to Detect Differences Between MD Simulations. 
+# How to use Random Forest Importance Features to Detect Differences Between MD Simulations. 
 
 <p align="center">
  <img width="500" src="main.png">
