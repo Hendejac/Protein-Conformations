@@ -4,8 +4,6 @@
  <img width="500" src="images/main.png">
 </p>
 
-# Table of Contents
-
 # Introduction
 
 Looking through esembles of molecular dynamics (MD) trajectories can be a daunting task.
