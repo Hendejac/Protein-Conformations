@@ -126,10 +126,31 @@ sorted_output = sorted(output,key=lambda l:l[1], reverse=True)
 ```
 
 Plotting the first 200 features shows that there are a handfull of features that are particularly good at classifying the MD snap shots between the apo and holo states.
+Since these features are the X, Y, and Z positions of the Cα atoms there are a few sites on the protein that differ between the apo and holo states.
 
-!<p align="center">
-! <img width="600" src="apo_holo.png">
-!</p>
+<p align="center">
+ <img width="600" src="f_importance.png">
+</p>
+
+Even though this plot has been sorted by feature importance, notice the smoothness of the plot. 
+An indication that the RF classifier is locking on to specific features and only uses those to classify shows up as discontinuous changes in feature importance. 
+This is generally a sign the two states are so different from each other it is almost pointless to use this method. 
+
+# Getting the Results - Making a PDB file Colored by Feature Importance
+
+Now that we know which features are important we need to present the results in a meaningful way to help guide our analysis of MD trajectories. 
+Again, a full example of how to do this is in the jupyter notebook (confML_apo_holo.ipynb), but select details will be dicussed here. 
+Now using the raw feature importance we look at the feature importance in set of three, since each Cα atom has three importance features, and select the max feature importance for that atom. 
+Now we have the max feature importance for each atom we can create a PDB file of the protein and place the feature importance normalized to the max of all feature importances in the beta column of the PDB. 
+The normalized feature importance for the Cα atom of each residue, will be used to color that residue.
+The resulting PDB can shown in [VMD](https://www.ks.uiuc.edu/Research/vmd/) or [PyMOL](https://pymol.org/2/) and colored by the beta column.
+
+After loading your PDB in PyMOL you can use the following command.
+
+```
+spectrum b, red_white_blue, minimum=0, maximum=1
+```
+
 
 
 
