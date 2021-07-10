@@ -1,6 +1,8 @@
 # How to use Random Forest Importance Feature to Detect Differences Between MD Simulations. 
 
-![](main.png)
+<p align="center">
+ <img width="500" src="main.png">
+</p>
 
 # Table of Contents
 
@@ -11,7 +13,9 @@ Here, I show how to use the Random Forest (RF) classifier to quickly located dif
 
 ## Example Case
 
-![](apo_holo.png)
+<p align="center">
+ <img width="600" src="apo_holo.png">
+</p>
 
 Here we will be looking at the malarial aspartyl protease Plasmepsin II (PDBid: 1SME) where one simulation has an inhibitor bound and the other is inhibitor free.
 By training the RF classifier between two states, in this case using inhibitor bound and unbound snap shots from MD simulations, you can use the feature importance to provide insight about the protein conformation.
@@ -109,7 +113,23 @@ In this example the success rate should be rather high at 95% or greater.
 
 # Feature Importance
 
+You can obtain a list of the feature importances from the training model using just a few lines of python and sorting them from highest two lowest. 
 
+```
+# View a list of the features and their importance scores 
+output = list(zip(df_train[features], rf_clf.feature_importances_))
+
+# convert list of tuples to a a list of lists 
+output = [list(temp) for temp in output]
+
+sorted_output = sorted(output,key=lambda l:l[1], reverse=True)
+```
+
+Plotting the first 200 features shows that there are a handfull of features that are particularly good at classifying the MD snap shots between the apo and holo states.
+
+!<p align="center">
+! <img width="600" src="apo_holo.png">
+!</p>
 
 
 
