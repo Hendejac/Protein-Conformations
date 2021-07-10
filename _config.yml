@@ -1,1 +1,9 @@
 theme: jekyll-theme-minimal
+title: <a href="https://github.com/Hendejac/Protein-Conformations">Detecting Differences in Protein Conformation with the Random Forest Classifiery</a> # your name (or website title) here
+description: > # your text below (remove <br> elements if you don't need line breaks)
+  Using feature importance from the Random Forest classifier to identify regions of conformaional difference.
+  <br>
+  <br>
+  <a href="https://hendejac.github.io/">Return to Portfolio</a>
+  <br>
+theme: jekyll-theme-minimal
