@@ -41,11 +41,13 @@ Note: Sometimes the check.pdb and pdb_for_color.pdb can be the same and dependin
 
 # Preparing the Dataset
 
-Now that the MD trajectories have been prepared the you can move on to making the dataset. 
+Now that the MD trajectories have been prepared you can move on to making the dataset. 
 A full example of this using MDAnalysis can be seen in the jupyter notebook, 'confML_apo_holo.ipynb'.
 In this case the dataset will be the X, Y, and Z positions of all the Cα atoms in each frame of the trajectories.
 In the example case here, I first make a dataframe from the simulation without the inhibitor (apo) and then do the same for the inhibitor bound simulation (holo).
 In these dataframes the rows are the snap shots from each simulation and the columns are the X, Y, and Z coordinates.
+Additionally, a new column is appended to the end of each data frame indicating the frame belongs to either the apo or holo state.
+Again, these are the two states we will be classifying between.
 
 ### Sample Apo Data 
 
@@ -54,7 +56,7 @@ In these dataframes the rows are the snap shots from each simulation and the col
 |  0 | 5.83 | 18.58|-17.02|  7.14| ... |-18.10|  apo  |
 |  1 | 7.70 |	18.93|-16.13|	 8.16| ... |-18.49|  apo  |
 | ...|  ... |  ... |  ... |  ... | ... |  ... |  ...  |
-|1049| 3.89 |	20.00|-12.55|	 3.21| ... |-18.90|  apo	|
+|1049| 3.89 |	20.00|-12.55|	 3.21| ... |-18.90|  apo	 |
  
 ### Sample Holo data 
 
@@ -64,3 +66,34 @@ In these dataframes the rows are the snap shots from each simulation and the col
 |  1 | 10.38|	1754 |-14.45|	 6.83| ... |-19.07|  holo |
 | ...|  ... |  ... |  ... |  ... | ... |  ... |  ...  |
 |1599| 9.57 |	3.87 |-18.24|	 9.24| ... |-19.14|  holo	|
+
+# Finalizing and Cleaning the Dataset
+
+You might have noticed from the example dataframes that the length of the dataframes are different. 
+So that the RF algorithm can properly see the difference between the two states and is not baised towards one state the dataframes needs to have the same number of rows.
+I have added a short python function (see below, create_train_and_test) that randomly deletes the number of different rows from the longer dataframe and adds a new label to numerically format the apo and holo labels.
+Finally the function uses the 'train_test_split' from 'sklearn.model_selection' to split the data into a training set and testing set. 
+
+```
+def create_train_and_test(df1, df2, random_seed, label='apo', split=0.75):
+    df_mod = pd.DataFrame() # The Data Frame to Modify
+    df_sta = pd.DataFrame() # The Data Frame to Leave Alone
+    remove_n = 0
+    # Here is to clean the data
+    if len(df1) > len(df2):
+        df_mod = df1
+        df_sta = df2
+        remove_n = len(df1) - len(df2)
+    else:
+        df_mod = df2
+        df_sta = df1
+        remove_n = len(df2) - len(df1)
+    drop_indices = np.random.choice(df_mod.index, remove_n, replace=False)
+    df_mod = df_mod.drop(drop_indices)
+    df_final = pd.concat([df_sta, df_mod])
+    df_final['num_label'] = [0 if x is label else 1 for x in df_final['label']]
+    train, test = train_test_split(df_final, train_size=split, test_size=(1-split), random_state=random_seed)
+    return train, test
+```
+
+
