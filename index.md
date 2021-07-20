@@ -25,14 +25,14 @@ The power of using the RF classifier to find the conformational differences is t
 
 The first thing you need is to do is prepare the MD trajectories you are going to analyze. 
 
-- [x] The trajecories need to be aligned, in this case the two ensmebles were aligned by the protein backbone atoms (C, Cα, N, and O).
-- [x] For efficiency remove the water and ions in the aligned trajecoteries, unless you are using water as the feature of interest. 
+- [x] The trajectories need to be aligned, in this case the two ensembles were aligned by the protein backbone atoms (C, Cα, N, and O).
+- [x] For efficiency remove the water and ions in the aligned trajectories, unless you are using water as the feature of interest. 
 - [x] Make a PDB file with connectivity information to view the trajectories. 
-- [x] Make a PDB file of the selection you are using to detect feature importance, or one you can use to color by feature importance. 
+- [x] Make a PDB file of the selection you are using to detect feature importance or one you can use to color by feature importance. 
 
-For this process I suggest using [MDAnalysis](https://www.mdanalysis.org/).
+For this process, I suggest using [MDAnalysis](https://www.mdanalysis.org/).
 
-In this example I have provided examples of the following inputs. 
+In this example I have provided the following inputs. 
 
 - [x] apo.dcd, ligand unbound trajectories 
 - [x] holo.dcd, ligand bound trajectories
