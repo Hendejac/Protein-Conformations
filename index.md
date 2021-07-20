@@ -106,12 +106,12 @@ The RF classifier is buildt in this example using 1000 trees in the forest.
 It is not uncommon for the RF classifier to be able to perfectly predict whether a frame belongs to the apo or holo simulations. 
 We are only classifying between two states and there might be a conformational feature that splits the data very nicely. 
 This is not always the case and the success rate of the RF classifier should be considered when using the feature importance to understand physical meaning in MD simulations.
-If the success rate is low then the supposedly high feature importances might not be very fruitfull to you understanding the difference between sets MD simulations.
-In this example the success rate should be rather high at 95% or greater. 
+If the success rate is low then the high feature importances might not be very fruitfull to your understanding of the difference between sets MD simulations.
+In this example the success rate should be high at 95% or greater. 
 
 # Feature Importance
 
-You can obtain a list of the feature importances from the training model using just a few lines in python and sorting them from highest to lowest. 
+You can obtain a list of all feature importances from the training model using just a few lines in python and sorting them from highest to lowest. 
 
 ```
 # View a list of the features and their importance scores 
@@ -123,7 +123,7 @@ output = [list(temp) for temp in output]
 sorted_output = sorted(output,key=lambda l:l[1], reverse=True)
 ```
 
-Plotting the first 200 features shows that there are a handful of features that are particularly good at classifying the MD snap shots between the apo and holo states.
+Plotting the first 200 features shows that there are a handful of features that are particularly good at classifying the MD snapshots between the apo and holo states.
 Since these features are the X, Y, and Z positions of the Cα atoms there are a few sites on the protein that differ between the apo and holo states.
 
 <p align="center">
@@ -131,8 +131,8 @@ Since these features are the X, Y, and Z positions of the Cα atoms there are a 
 </p>
 
 Even though this plot has been sorted by feature importance, notice the smoothness of the plot. 
-An indication that the RF classifier is locking on to specific features and only uses those to classify shows up as discontinuous changes in feature importance. 
-This is generally a sign the two states are so different from each other it is almost pointless to use this method or something has gone wrong with the alignment of the protein. 
+Discontinuous changes in feature importance is an indication that the RF classifier is locking on to specific features and only uses those features to classify
+This is generally a sign the two states are so different from each other that it is pointless to use this method or that something has gone wrong with the alignment of the proteins. 
 
 # Getting the Results - Making a PDB file Colored by Feature Importance
 
