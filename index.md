@@ -17,9 +17,9 @@ Here, I show how to use the Random Forest (RF) classifier to quickly locate diff
 
 Here we will be looking at the malarial aspartyl protease Plasmepsin II (PDBid: 1SME) where one simulation has an inhibitor bound (holo) and the other is inhibitor free (apo).
 By training the RF classifier between two states, in this case using inhibitor bound and unbound snapshots from MD simulations, you can use the feature importance to gain insight about the protein conformation.
-The features in this can almost be anything from water positions, dihedral angles, and Cα positions.
+The features used for the classifier can be almost anything for example, water positions, dihedral angles, and Cα positions.
 In this example, the Cα positions will be used. 
-The power of using the RF classifier to find the conformational differences is to reduce the amount of time spent by a computational chemist rigorously groom MD simulations by eye, and it has the potential to detect allosteric conformational changes that one would not think to look for. 
+The power of using the RF classifier to find the conformational differences is the reduction in the amount of time spent by a computational chemist rigorously grooming MD simulations by eye, and it has the potential to detect allosteric conformational changes that one would not think to look for. 
 
 # Getting Started 
 
@@ -36,10 +36,10 @@ In this example I have provided the following inputs.
 
 - [x] apo.dcd, ligand unbound trajectories 
 - [x] holo.dcd, ligand bound trajectories
-- [x] check.pdb, PDB used to view the trajecotry files
+- [x] check.pdb, PDB used to view the trajectory files
 - [x] pdb_for_coloring.pdb, PDB used to color by feature importance 
 
-Note: Sometimes the check.pdb and pdb_for_color.pdb can either the same or different, in this example they are the same.
+Note: Sometimes the check.pdb and pdb_for_color.pdb can either be the same or different, in this example they are the same.
 
 # Preparing the Dataset
 
