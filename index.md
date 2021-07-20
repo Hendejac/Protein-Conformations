@@ -16,10 +16,10 @@ Here, I show how to use the Random Forest (RF) classifier to quickly locate diff
 </p>
 
 Here we will be looking at the malarial aspartyl protease Plasmepsin II (PDBid: 1SME) where one simulation has an inhibitor bound (holo) and the other is inhibitor free (apo).
-By training the RF classifier between two states, in this case using inhibitor bound and unbound snap shots from MD simulations, you can use the feature importance to provide insight about the protein conformation.
+By training the RF classifier between two states, in this case using inhibitor bound and unbound snapshots from MD simulations, you can use the feature importance to gain insight about the protein conformation.
 The features in this can almost be anything from water positions, dihedral angles, and Cα positions.
-In this example the Cα positions will be used. 
-The power of using the RF classifier to to find the conformational differences is to reduce the amount of time spent by a computational chemist rigorously groom MD simulations by eye, and it has the potential to detect allosteric conformational changes that one would not think to look for. 
+In this example, the Cα positions will be used. 
+The power of using the RF classifier to find the conformational differences is to reduce the amount of time spent by a computational chemist rigorously groom MD simulations by eye, and it has the potential to detect allosteric conformational changes that one would not think to look for. 
 
 # Getting Started 
 
