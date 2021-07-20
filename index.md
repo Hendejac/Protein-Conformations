@@ -71,9 +71,9 @@ Again, these are the two states we will be classifying between.
 
 # Finalizing and Cleaning the Dataset
 
-You might have noticed that the example dataframes have different lengths. 
-So that the RF classifier can properly see the difference between the two states and is not baised towards one or the other state, the dataframes needs to have the same number of rows (meaning snapshots/frames).
-I have added a short python function (see below, create_train_and_test) that randomly deletes the number of different rows from the longer dataframe and adds a new label to numerically format the apo and holo labels.
+You might have noticed that the example data frames have different lengths. 
+So that the RF classifier can properly see the difference between the two states and is not biased towards one or the other state, the data frames needs to have the same number of rows (meaning snapshots/frames).
+I have added a short python function (see below, create_train_and_test) that randomly deletes the number of different rows from the longer data frame and adds a new label to numerically format the apo and holo labels.
 Finally the function uses the 'train_test_split' from 'sklearn.model_selection' to split the data into a training set and a testing set. 
 
 ```
@@ -100,10 +100,10 @@ def create_train_and_test(df1, df2, random_seed, label='apo', split=0.75):
 
 # Running the Random Forest Classifier
 
-Now we create a model using the training data and see how good of a job that model is at predict whether a given frame belongs to the apo or holo simulations. 
+Now we create a model using the training data and see how good of a job that model is at predicting whether a given frame belongs to the apo or holo simulations. 
 Again, a full example of this is given in the jupyter notebook, 'confML_apo_holo.ipynb'. 
-The RF classifier is build in this example using 1000 trees in the forest. 
-It is not uncommon for the RF classifier to perfectly be able to predict whether a frame belongs to the apo or holo simulations. 
+The RF classifier is buildt in this example using 1000 trees in the forest. 
+It is not uncommon for the RF classifier to be able to perfectly predict whether a frame belongs to the apo or holo simulations. 
 We are only classifying between two states and there might be a conformational feature that splits the data very nicely. 
 This is not always the case and the success rate of the RF classifier should be considered when using the feature importance to understand physical meaning in MD simulations.
 If the success rate is low then the supposedly high feature importances might not be very fruitfull to you understanding the difference between sets MD simulations.
