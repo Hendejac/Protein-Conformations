@@ -23,12 +23,12 @@ The power of using the RF classifier to find the conformational differences is t
 
 # Getting Started 
 
-The first thing you need is to do is prepare the MD trajectories you are going to analyze. 
+The first thing you need to do is prepare the MD trajectories you are going to analyze. 
 
 - [x] The trajectories need to be aligned, in this case the two ensembles were aligned by the protein backbone atoms (C, Cα, N, and O).
 - [x] For efficiency remove the water and ions in the aligned trajectories, unless you are using water as the feature of interest. 
 - [x] Make a PDB file with connectivity information to view the trajectories. 
-- [x] Make a PDB file of the selection you are using to detect feature importance or one you can use to color by feature importance. 
+- [x] Make a PDB file of the whole protein or the subselection that you are interested in investigating. This will be used later to color by feature importance.  
 
 For this process, I suggest using [MDAnalysis](https://www.mdanalysis.org/).
 
@@ -45,9 +45,9 @@ Note: Sometimes the check.pdb and pdb_for_color.pdb can either be the same or di
 
 Now that the MD trajectories have been prepared you can move on to making the dataset. 
 A full example of this using MDAnalysis can be seen in the jupyter notebook, 'confML_apo_holo.ipynb'.
-In this case the dataset will be the X, Y, and Z positions of all the Cα atoms from each frame of the trajectories.
-In the example case here, I first make a dataframe from the simulation without the inhibitor (apo) and then do the same for the inhibitor bound simulation (holo).
-In these dataframes the rows are the snap shots from each simulation and the columns are the X, Y, and Z coordinates.
+In this case, the dataset will be the X, Y, and Z positions of all the Cα atoms from each frame of the trajectories.
+In the example case here, I first make a data frame from the simulation without the inhibitor (apo) and then do the same for the inhibitor-bound simulation (holo).
+In these data frames the rows are the snapshots from each simulation and the columns are the X, Y, and Z coordinates.
 Additionally, a new column is appended to the end of each data frame indicating the frame belongs to either the apo or holo state.
 Again, these are the two states we will be classifying between.
 
