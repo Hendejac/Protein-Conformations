@@ -132,15 +132,15 @@ Since these features are the X, Y, and Z positions of the Cα atoms there are a 
 
 Even though this plot has been sorted by feature importance, notice the smoothness of the plot. 
 Discontinuous changes in feature importance is an indication that the RF classifier is locking on to specific features and only uses those features to classify
-This is generally a sign the two states are so different from each other that it is pointless to use this method or that something has gone wrong with the alignment of the proteins. 
+This maybe a sign the two states are so different from each other it is pointless to use this method or something has gone wrong with the alignment of the proteins. 
 
 # Getting the Results - Making a PDB file Colored by Feature Importance
 
 Now that we know which features are important we need to present the results in a meaningful way to help guide our analysis of MD trajectories. 
-Again, a full example of how to do this is in the jupyter notebook (confML_apo_holo.ipynb), but select details will be dicussed here. 
-Now using the raw feature importances we consider the feature importances in set of three, since each Cα atom has three importance features, and select the max feature importance for that atom. 
-Now we have the max feature importance for each atom we can create a PDB file for the protein and place the feature importance normalized to the max of all feature importances in the beta column of the PDB. 
-The normalized feature importance for the Cα atom of each residue, will be used to color that residue.
+Again, a full example of how to do this is in the jupyter notebook (confML_apo_holo.ipynb), but select details will be discussed here. 
+Now we consider the feature importances in a set of three, since each Cα atom has three importance features, and select the max feature importance for that atom. 
+Now that we have the max feature importance for each atom we can create a PDB file for the protein and place the feature importance normalized to the max of all feature importances in the beta column of the PDB. 
+The normalized feature importance for the Cα atom of each residue will be used to color that residue.
 The resulting PDB can be shown in [VMD](https://www.ks.uiuc.edu/Research/vmd/) or [PyMOL](https://pymol.org/2/) and colored by the beta column.
 
 After loading your PDB in PyMOL you can use the following command.
@@ -154,8 +154,8 @@ spectrum b, red_white_blue, minimum=0, maximum=1
 </p>
 
 Looking at this colored PDB file instantly shows where you need to focus your analysis when analyzing MD trajectories. 
-We can see the highlighted blue areas show were the protein differs the most between the apo and holo simulations showing that the presence of the inhibitor effects these areas the most. 
-Unsuprisingly we see changes in the protein substrate binding site, but conformational changes also take place on the bottom (C-terminal lobe) of the protein. 
-This is a very basic demonstration of using the RF classifier on MD trajecories, this method can be focused to look at every atom in the binding site to see exactly what part of what residue is changing positions and many other scenerioes. 
-This method has also been extend to looking at the displacement of water positions upon inhibitor binding, something that might be added here in the future. 
+We can see the highlighted blue areas show where the protein differs the most between the apo and holo simulations showing that the presence of the inhibitor has the greatest affect on these areas. 
+Unsurprisingly we see changes in the protein substrate binding site, but conformational changes also take place on the bottom (C-terminal lobe) of the protein. 
+This is a very basic demonstration of using the RF classifier on MD trajectories, this method can be focused to look at every atom in the binding site to see exactly what part of what residue is changing positions and many other scenarios. 
+This method has also been extended to looking at the displacement of water positions upon inhibitor binding, something that might be added here in the future. 
 
